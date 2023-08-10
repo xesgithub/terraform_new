@@ -1,9 +1,13 @@
 resource "azurerm_route_table" "azfwroutetable" {
   name                          = "adl-common-new-route-table"
-  resource_group_name           = "resource_group.name"
-  location                      = "japaneast"
+  resource_group_name           = azurerm_resource_group.resource_group.name
+  location                      = azurerm_resource_group.resource_group.location
   disable_bgp_route_propagation = false
-
+  tags = {
+    CreaterName = "Phannaphon Phonloedkasemsuk"
+    UserName    = "Siwanat Ponkhun"
+    UserEmail   = "siwanato@ais.co.th"
+  }
   route = [
     {
       name                   = "AzfwDefaultRoute"
@@ -13,4 +17,6 @@ resource "azurerm_route_table" "azfwroutetable" {
     }
 
   ]
+
+
 }
